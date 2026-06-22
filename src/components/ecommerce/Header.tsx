@@ -37,6 +37,15 @@ export const Header = () => {
               Catálogo
             </Link>
 
+            {user && user.role !== 'ADMIN' && (
+              <Link 
+                href="/orders" 
+                className="font-display text-xs font-bold uppercase tracking-wider text-neutral-900 hover:text-neutral-500 transition-colors cursor-pointer"
+              >
+                Mis Pedidos
+              </Link>
+            )}
+
             {user?.role === 'ADMIN' && (
               <Link 
                 href="/admin" 
