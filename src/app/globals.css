@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neo-bg: #FFFFFF;
+  --color-neo-dark: #111111;
+  --color-neo-lime: #111111;
+  --color-neo-orange: #EA580C;
+  --color-neo-blue: #2563EB;
+  
+  --font-display: var(--font-outfit), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #111111;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Redefined helper classes to map from Neo-brutalist to Nike-style premium minimalism */
+.neo-border {
+  border: 1px solid #E5E5E5;
+}
+
+.neo-border-thick {
+  border: 1px solid #111111;
+}
+
+.neo-shadow {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+.neo-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
+
+.neo-shadow-lime {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+
+.neo-shadow-orange {
+  box-shadow: 0 4px 6px -1px rgb(234 88 12 / 0.08);
+}
+
+.neo-shadow-blue {
+  box-shadow: 0 4px 6px -1px rgb(37 99 235 / 0.08);
+}
+
+/* Press animations */
+.neo-press {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.neo-press:active {
+  transform: scale(0.96);
+}
+
+.neo-press-lg {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.neo-press-lg:active {
+  transform: scale(0.98);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
