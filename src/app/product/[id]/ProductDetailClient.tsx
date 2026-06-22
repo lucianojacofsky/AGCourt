@@ -19,7 +19,6 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: P
   const { addToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>('10');
   const [showToast, setShowToast] = useState(false);
-  const [activeView, setActiveView] = useState<number>(0);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
 
   const sizes = ['8', '9', '10', '11', '12'];
@@ -51,13 +50,6 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: P
   };
 
   const isOutOfStock = product.stock <= 0;
-
-  // Gallery view configurations (Simulating different angles with CSS Transforms)
-  const viewStyles = [
-    { name: "Perfil", class: "scale-100 rotate-0" },
-    { name: "Detalle Zoom", class: "scale-160 translate-x-8 -translate-y-4" },
-    { name: "Ángulo Suela", class: "scale-125 -rotate-45 translate-y-6" }
-  ];
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col gap-10 relative">
@@ -138,47 +130,23 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: P
       {/* Main Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         
-        {/* Left Column: Image Gallery */}
-        <div className="flex flex-col gap-4">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="border border-neutral-200 rounded-2xl bg-neutral-50 p-6 shadow-xs overflow-hidden aspect-square flex items-center justify-center relative"
-          >
-            <div className="w-full h-full rounded-xl bg-white overflow-hidden flex items-center justify-center border border-neutral-100 relative">
-              <motion.img
-                src={product.imageUrl}
-                alt={product.name}
-                className={`w-full h-full object-cover transition-transform duration-500 ease-out ${viewStyles[activeView].class}`}
-              />
-            </div>
-          </motion.div>
-
-          {/* Thumbnails list */}
-          <div className="grid grid-cols-3 gap-3">
-            {viewStyles.map((view, idx) => (
-              <button
-                key={view.name}
-                onClick={() => setActiveView(idx)}
-                className={`p-2 rounded-xl border bg-neutral-50 text-left flex flex-col gap-1 transition-all cursor-pointer ${
-                  activeView === idx 
-                    ? 'border-neutral-900 bg-white ring-1 ring-neutral-900' 
-                    : 'border-neutral-200 hover:border-neutral-400 hover:bg-neutral-100'
-                }`}
-              >
-                <span className="text-[9px] font-bold uppercase text-neutral-400">{view.name}</span>
-                <div className="w-10 h-10 overflow-hidden rounded bg-white border border-neutral-100 self-center flex items-center justify-center">
-                  <img 
-                    src={product.imageUrl} 
-                    alt={view.name} 
-                    className={`w-full h-full object-cover transition-transform ${view.class}`} 
-                  />
-                </div>
-              </button>
-            ))}
+        {/* Left Column: Single Premium Image with Hover Zoom */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="border border-neutral-200 rounded-2xl bg-neutral-50 p-6 shadow-xs overflow-hidden aspect-square flex items-center justify-center"
+        >
+          <div className="w-full h-full rounded-xl bg-white overflow-hidden flex items-center justify-center border border-neutral-100 relative">
+            <motion.img
+              src={product.imageUrl}
+              alt={product.name}
+              className="w-full h-full object-cover"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            />
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Content */}
         <motion.div
