@@ -17,31 +17,11 @@ export default async function ProductDetailPage({ params }: Props) {
     notFound();
   }
 
-  // Fetch related products of the same category
-  const related = await prisma.product.findMany({
-    where: {
-      category: product.category,
-      NOT: { id: product.id },
-    },
-    take: 4,
-  });
-
   const serializedProduct = {
     ...product,
     createdAt: product.createdAt.toISOString(),
     updatedAt: product.updatedAt.toISOString(),
   };
 
-  const serializedRelated = related.map((p) => ({
-    ...p,
-    createdAt: p.createdAt.toISOString(),
-    updatedAt: p.updatedAt.toISOString(),
-  }));
-
-  return (
-    <ProductDetailClient 
-      product={serializedProduct} 
-      relatedProducts={serializedRelated} 
-    />
-  );
+  return <ProductDetailClient product={serializedProduct} />;
 }
