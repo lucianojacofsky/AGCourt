@@ -70,89 +70,72 @@ export default function CatalogPage() {
   };
 
   return (
-    <div className="flex flex-col gap-16 pb-20 overflow-x-hidden">
+    <div className="flex flex-col gap-20 pb-20 overflow-x-hidden bg-white text-neutral-900">
       
-      {/* 1. Immersive Hero Section (Nike Editorial Style) */}
-      <section className="relative bg-neutral-950 text-white min-h-[calc(100vh-5rem)] flex items-center overflow-hidden border-b border-neutral-800">
+      {/* 1. Immersive Hero Section (Sleek Nike Style - Light Theme for Perfect Image Blending) */}
+      <section className="relative bg-neutral-50 min-h-[70vh] flex items-center overflow-hidden border-b border-neutral-200">
         {/* Soft background light */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-orange-950/20 via-neutral-950 to-black z-0 pointer-events-none" />
-        
-        {/* Glowing Orange Halo behind the floating shoe */}
-        <div className="absolute right-[10%] top-[30%] w-96 h-96 rounded-full bg-orange-600/10 blur-3xl z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-neutral-100 via-neutral-50 to-white z-0 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10 w-full">
           {/* Left Column: Heavy Typography */}
           <div className="md:col-span-7 flex flex-col gap-6 text-left">
             <div>
-              <Badge variant="orange" className="bg-orange-600/10 border border-orange-500/20 text-orange-500 rounded-full py-1 px-4 text-[9px] font-black uppercase tracking-widest inline-block mb-4">
+              <Badge className="bg-neutral-900 text-white rounded-full py-1 px-4 text-[9px] font-black uppercase tracking-widest inline-block mb-4">
                 NUEVA TEMPORADA 2026
               </Badge>
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] flex flex-col">
-                <span className="text-neutral-400">CORTA EL VIENTO.</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-600 to-amber-500 drop-shadow-sm">
-                  DOMINA LA CANCHA.
-                </span>
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] flex flex-col text-neutral-900">
+                <span>CORTA EL VIENTO.</span>
+                <span className="text-orange-600">DOMINA LA CANCHA.</span>
               </h1>
             </div>
-            <p className="text-sm sm:text-base text-neutral-400 font-medium max-w-lg leading-relaxed">
-              Equipamiento técnico premium desarrollado para atletas que desafían la gravedad. Descubre la línea oficial de calzado e indumentaria con tracción absoluta y amortiguación reactiva.
+            <p className="text-sm sm:text-base text-neutral-500 font-medium max-w-lg leading-relaxed">
+              Equipamiento técnico premium desarrollado para atletas de élite. Descubre la línea oficial de calzado e indumentaria con tracción absoluta y amortiguación reactiva.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
               <button 
                 onClick={scrollToCatalog}
-                className="px-8 py-4 bg-white text-neutral-950 hover:bg-neutral-100 rounded-full font-display text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-md"
+                className="px-8 py-4 bg-neutral-900 text-white hover:bg-neutral-800 rounded-full font-display text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
                 Comprar Colección
               </button>
             </div>
           </div>
 
-          {/* Right Column: Floating Hero Sneaker */}
-          <div className="md:col-span-5 flex justify-center items-center relative min-h-[300px]">
+          {/* Right Column: Clean Premium Product Image (No rotation) */}
+          <div className="md:col-span-5 flex justify-center items-center">
             {featuredProducts[0] && (
-              <motion.div
-                animate={{
-                  y: [0, -15, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="relative cursor-pointer select-none"
-              >
-                {/* Floating sneaker card container */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent blur-2xl rounded-full scale-90" />
+              <div className="relative border border-neutral-200 bg-white rounded-2xl p-4 shadow-md max-w-sm w-full aspect-square flex items-center justify-center">
                 <img 
                   src={featuredProducts[0].imageUrl} 
                   alt="Sneaker Hero" 
-                  className="w-96 h-96 object-contain rotate-[-12deg] drop-shadow-[0_20px_50px_rgba(234,88,12,0.3)] hover:scale-105 transition-transform duration-300 pointer-events-none"
+                  className="w-full h-full object-cover rounded-xl"
                 />
-              </motion.div>
+              </div>
             )}
           </div>
         </div>
       </section>
 
-      {/* 2. Infinite Text Marquee (Movement) */}
-      <div className="bg-neutral-950 border-y border-neutral-800 py-4 overflow-hidden relative select-none">
+      {/* 2. Infinite Text Marquee (Sleek & Clean) */}
+      <div className="bg-white border-y border-neutral-200 py-4 overflow-hidden relative select-none">
         <div className="animate-marquee flex gap-12 whitespace-nowrap">
           {[1, 2, 3, 4].map((i) => (
-            <span key={i} className="font-display text-xs sm:text-sm font-black uppercase tracking-widest text-neutral-500 flex items-center gap-12">
+            <span key={i} className="font-display text-xs sm:text-sm font-black uppercase tracking-widest text-neutral-400 flex items-center gap-12">
               <span>COURT PERFORMANCE</span>
-              <span className="text-orange-500">•</span>
+              <span className="text-orange-600">•</span>
               <span>ELITE LEVEL GEAR</span>
-              <span className="text-orange-500">•</span>
+              <span className="text-orange-600">•</span>
               <span>UNLEASH SPEED</span>
-              <span className="text-orange-500">•</span>
+              <span className="text-orange-600">•</span>
               <span>BECOME THE LEGEND</span>
-              <span className="text-orange-500">•</span>
+              <span className="text-orange-600">•</span>
             </span>
           ))}
         </div>
       </div>
 
-      {/* 3. Featured Drops Pasarela (Carousel) */}
+      {/* 3. Featured Drops Pasarela (Carousel - Light Cards for Image Blending) */}
       {featuredProducts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
           <div className="flex justify-between items-end">
@@ -160,7 +143,7 @@ export default function CatalogPage() {
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-orange-600 block mb-1">
                 LANZAMIENTOS CLAVE
               </span>
-              <h2 className="font-display text-2xl font-black uppercase tracking-tight text-neutral-950 leading-none">
+              <h2 className="font-display text-2xl font-black uppercase tracking-tight text-neutral-900 leading-none">
                 Lanzamientos de Élite
               </h2>
             </div>
@@ -187,43 +170,37 @@ export default function CatalogPage() {
             ref={carouselRef}
             className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar scroll-smooth"
           >
-            {featuredProducts.map((p, idx) => (
+            {featuredProducts.map((p) => (
               <div 
                 key={p.id} 
-                className="min-w-[320px] sm:min-w-[400px] flex-shrink-0 bg-neutral-950 text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden snap-start border border-neutral-800 group shadow-md"
+                className="min-w-[300px] sm:min-w-[360px] flex-shrink-0 bg-white border border-neutral-200 rounded-2xl p-6 flex flex-col justify-between relative snap-start group shadow-xs hover:shadow-md transition-all duration-300"
               >
-                {/* Background Giant Number */}
-                <span className="absolute -left-2 -top-8 font-display font-black text-[150px] text-neutral-900/40 select-none leading-none z-0">
-                  0{idx + 1}
-                </span>
-
-                <div className="z-10 flex justify-between items-start gap-4">
+                <div className="flex justify-between items-start gap-4">
                   <div>
-                    <span className="text-[9px] font-extrabold uppercase tracking-widest text-orange-500 block mb-1">
+                    <span className="text-[9px] font-extrabold uppercase tracking-widest text-orange-600 block mb-1">
                       SIGNATURE MODEL
                     </span>
-                    <h3 className="font-display text-lg font-extrabold uppercase tracking-tight max-w-[200px] line-clamp-2">
+                    <h3 className="font-display text-base font-extrabold uppercase tracking-tight text-neutral-900 line-clamp-1">
                       {p.name}
                     </h3>
                   </div>
-                  <span className="font-display text-base font-bold bg-white/10 px-3 py-1 rounded-md text-amber-500">
+                  <span className="font-display text-sm font-bold bg-neutral-100 text-neutral-900 px-3 py-1 rounded-md">
                     ${p.price.toFixed(2)}
                   </span>
                 </div>
 
-                {/* Center Image */}
-                <div className="my-6 flex justify-center items-center relative h-40">
-                  <div className="absolute w-28 h-28 bg-orange-600/10 rounded-full blur-xl scale-75 group-hover:scale-100 transition-transform duration-500" />
+                {/* Center Image - Straight, no rotation, clean blending */}
+                <div className="my-6 aspect-square rounded-xl overflow-hidden bg-neutral-50 border border-neutral-100 flex items-center justify-center">
                   <img 
                     src={p.imageUrl} 
                     alt={p.name} 
-                    className="w-48 h-36 object-contain rotate-[-8deg] group-hover:rotate-0 group-hover:scale-105 transition-all duration-500 ease-out z-10" 
+                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500 ease-out" 
                   />
                 </div>
 
                 {/* Footer Link */}
-                <Link href={`/product/${p.id}`} className="z-10 mt-auto">
-                  <button className="w-full py-3 bg-white text-neutral-950 group-hover:bg-orange-600 group-hover:text-white rounded-full font-display text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center gap-1">
+                <Link href={`/product/${p.id}`} className="mt-auto">
+                  <button className="w-full py-3 bg-neutral-900 text-white hover:bg-neutral-800 rounded-full font-display text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center gap-1">
                     <span>Ver Detalles</span>
                     <ChevronRight className="w-3.5 h-3.5" />
                   </button>
@@ -234,51 +211,50 @@ export default function CatalogPage() {
         </section>
       )}
 
-      {/* 4. Bento Grid (Technology & Details) */}
+      {/* 4. Bento Grid (Technology & Details - Clean Consistent Light Theme) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
         <div>
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-orange-600 block mb-1">
             INGENIERÍA E INNOVACIÓN
           </span>
-          <h2 className="font-display text-2xl font-black uppercase tracking-tight text-neutral-950 leading-none">
+          <h2 className="font-display text-2xl font-black uppercase tracking-tight text-neutral-900 leading-none">
             Diseño para el Rendimiento
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {/* Card 1: Reactivity */}
-          <div className="md:col-span-2 border border-neutral-200 bg-neutral-950 text-white rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row gap-6 justify-between items-center overflow-hidden hover:border-orange-500/30 transition-colors shadow-xs group">
+          <div className="md:col-span-2 border border-neutral-200 bg-neutral-50 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 justify-between items-center overflow-hidden hover:border-neutral-300 transition-colors shadow-xs group">
             <div className="flex flex-col gap-3 max-w-sm">
-              <div className="w-10 h-10 bg-orange-600/15 rounded-lg flex items-center justify-center text-orange-500">
+              <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="font-display text-base font-extrabold uppercase tracking-tight mt-2">
+              <h3 className="font-display text-base font-extrabold uppercase tracking-tight mt-2 text-neutral-900">
                 REACTIVIDAD TOTAL (Zoom Air)
               </h3>
-              <p className="text-xs text-neutral-400 font-semibold leading-relaxed">
+              <p className="text-xs text-neutral-500 font-semibold leading-relaxed">
                 Cápsulas de aire presurizado en la suela del calzado que absorben el impacto de tus saltos y devuelven la energía en forma de explosión y propulsión inmediata.
               </p>
             </div>
             
             {/* Tech illustration */}
-            <div className="w-48 h-32 bg-neutral-900 border border-neutral-800 rounded-xl relative overflow-hidden flex items-center justify-center group-hover:border-orange-500/20 transition-colors">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-600/5 to-transparent" />
-              <span className="font-display font-black text-xs text-orange-600/40 uppercase tracking-widest animate-pulse">
+            <div className="w-48 h-32 bg-white border border-neutral-200 rounded-xl relative overflow-hidden flex items-center justify-center">
+              <span className="font-display font-black text-[10px] text-orange-600/30 uppercase tracking-widest animate-pulse">
                 AIR CHAMBER
               </span>
-              <div className="absolute bottom-2 left-2 right-2 h-1 bg-orange-600/40 rounded-full overflow-hidden">
-                <div className="w-2/3 h-full bg-orange-500 animate-pulse" />
+              <div className="absolute bottom-2 left-2 right-2 h-1 bg-orange-100 rounded-full overflow-hidden">
+                <div className="w-2/3 h-full bg-orange-500" />
               </div>
             </div>
           </div>
 
           {/* Card 2: Traction */}
-          <div className="border border-neutral-200 bg-white rounded-2xl p-6 sm:p-8 flex flex-col gap-4 justify-between hover:border-neutral-400 transition-colors shadow-xs">
+          <div className="border border-neutral-200 bg-white rounded-2xl p-6 sm:p-8 flex flex-col gap-4 justify-between hover:border-neutral-300 transition-colors shadow-xs">
             <div className="flex flex-col gap-3">
               <div className="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center text-neutral-900">
                 <Compass className="w-5 h-5" />
               </div>
-              <h3 className="font-display text-base font-extrabold uppercase tracking-tight mt-2">
+              <h3 className="font-display text-base font-extrabold uppercase tracking-tight mt-2 text-neutral-900">
                 TRACCIÓN 360°
               </h3>
               <p className="text-xs text-neutral-500 font-semibold leading-relaxed">
@@ -291,12 +267,12 @@ export default function CatalogPage() {
           </div>
 
           {/* Card 3: Support */}
-          <div className="border border-neutral-200 bg-white rounded-2xl p-6 sm:p-8 flex flex-col gap-4 justify-between hover:border-neutral-400 transition-colors shadow-xs">
+          <div className="border border-neutral-200 bg-white rounded-2xl p-6 sm:p-8 flex flex-col gap-4 justify-between hover:border-neutral-300 transition-colors shadow-xs">
             <div className="flex flex-col gap-3">
               <div className="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center text-neutral-900">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <h3 className="font-display text-base font-extrabold uppercase tracking-tight mt-2">
+              <h3 className="font-display text-base font-extrabold uppercase tracking-tight mt-2 text-neutral-900">
                 MALLA DE CONTENCIÓN
               </h3>
               <p className="text-xs text-neutral-500 font-semibold leading-relaxed">
