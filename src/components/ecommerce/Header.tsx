@@ -31,7 +31,19 @@ export const Header = () => {
           {/* Navigation */}
           <nav className="flex items-center gap-6">
             <Link 
-              href="/" 
+              href="/#novedades" 
+              className="font-display text-xs font-bold uppercase tracking-wider text-neutral-900 hover:text-neutral-500 transition-colors cursor-pointer"
+            >
+              Novedades
+            </Link>
+            <Link 
+              href="/#atletas" 
+              className="font-display text-xs font-bold uppercase tracking-wider text-neutral-900 hover:text-neutral-500 transition-colors cursor-pointer"
+            >
+              Atletas
+            </Link>
+            <Link 
+              href="/#catalogo" 
               className="font-display text-xs font-bold uppercase tracking-wider text-neutral-900 hover:text-neutral-500 transition-colors cursor-pointer"
             >
               Catálogo

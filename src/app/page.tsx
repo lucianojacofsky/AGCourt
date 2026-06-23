@@ -116,25 +116,25 @@ function CatalogContent() {
   const athletes = [
     {
       name: 'Kobe Bryant',
-      query: 'Kobe',
+      query: 'Kobe Bryant',
       image: 'https://images.unsplash.com/photo-1544698310-74ea9d1c8258?q=80&w=800',
       quote: 'Mamba Mentality'
     },
     {
       name: 'Ja Morant',
-      query: 'Ja',
+      query: 'Ja Morant',
       image: 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=800',
       quote: 'Estilo Explosivo'
     },
     {
       name: 'Giannis Antetokounmpo',
-      query: 'Giannis',
-      image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800',
+      query: 'Giannis Antetokounmpo',
+      image: 'https://images.unsplash.com/photo-1505666287802-931dc83948e9?q=80&w=800',
       quote: 'Poder Físico'
     },
     {
       name: 'LeBron James',
-      query: 'LeBron',
+      query: 'LeBron James',
       image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800',
       quote: 'El Rey de la Cancha'
     }
@@ -148,7 +148,7 @@ function CatalogContent() {
         {/* Immersive background image of a hoop at sunset */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1519766304817-4f37bda74a27?q=80&w=1920" 
+            src="https://images.unsplash.com/photo-1504450758481-7338eaa75e6a?q=80&w=1920" 
             alt="Nike Basketball Hoop at Sunset" 
             className="w-full h-full object-cover opacity-60"
           />
@@ -186,7 +186,7 @@ function CatalogContent() {
       </section>
 
       {/* 2. Athlete Collections Section ("Comprar por Atleta" Grid) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
+      <section id="atletas" className="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
         <div>
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-neutral-400 block mb-1">
             COLECCIONES EXCLUSIVAS
@@ -228,7 +228,7 @@ function CatalogContent() {
 
       {/* 3. Featured Drops / Hot Releases Slider (Borderless Nike Style Carousel) */}
       {featuredProducts.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
+        <section id="novedades" className="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
           <div className="flex justify-between items-end">
             <div>
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-orange-600 block mb-1">
@@ -300,8 +300,9 @@ function CatalogContent() {
 
       {/* 4. Complete Catalog Section with Left Sidebar Filters (Sleek Nike Grid) */}
       <section 
+        id="catalogo"
         ref={catalogRef} 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-8 scroll-mt-20 border-t border-neutral-200 pt-16"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col gap-8 scroll-mt-24 border-t border-neutral-200 pt-16"
       >
         <div className="flex justify-between items-center">
           <div>
