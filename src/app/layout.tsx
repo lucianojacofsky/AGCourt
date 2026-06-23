@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/core/providers/AuthProvider";
 import { CartProvider } from "@/core/providers/CartProvider";
 import { Header } from "@/components/ecommerce/Header";
+import { SubHeader } from "@/components/ecommerce/SubHeader";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <Header />
+            <SubHeader />
             <main className="flex-1 flex flex-col">
               {children}
             </main>
