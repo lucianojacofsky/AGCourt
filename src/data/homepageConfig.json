@@ -1,0 +1,33 @@
+{
+  "heroTitle": "SIEMPRE EN VUELO.",
+  "heroSubtitle": "Descubre las siluetas oficiales de firma diseñadas para la velocidad explosiva de Ja Morant, el poder dominante de Giannis y la mamba mentality de Kobe Bryant.",
+  "heroImage": "https://images.unsplash.com/photo-1504450758481-7338eaa75e6a?q=80&w=1920",
+  "heroCtaText": "Comprar Todo Calzado",
+  "heroSecondaryCtaText": "Línea Ja Morant",
+  "athletes": [
+    {
+      "name": "Kobe Bryant",
+      "query": "Kobe Bryant",
+      "image": "https://images.unsplash.com/photo-1544698310-74ea9d1c8258?q=80&w=800",
+      "quote": "Mamba Mentality"
+    },
+    {
+      "name": "Ja Morant",
+      "query": "Ja Morant",
+      "image": "https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=800",
+      "quote": "Estilo Explosivo"
+    },
+    {
+      "name": "Giannis Antetokounmpo",
+      "query": "Giannis Antetokounmpo",
+      "image": "https://images.unsplash.com/photo-1505666287802-931dc83948e9?q=80&w=800",
+      "quote": "Poder Físico"
+    },
+    {
+      "name": "LeBron James",
+      "query": "LeBron James",
+      "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800",
+      "quote": "El Rey de la Cancha"
+    }
+  ]
+}

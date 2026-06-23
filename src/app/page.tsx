@@ -10,6 +10,40 @@ import Link from 'next/link';
 
 const categories = ['Todos', 'Zapatillas', 'Indumentaria', 'Accesorios', 'Ofertas'];
 
+const DEFAULT_CONFIG = {
+  heroTitle: "SIEMPRE EN VUELO.",
+  heroSubtitle: "Descubre las siluetas oficiales de firma diseñadas para la velocidad explosiva de Ja Morant, el poder dominante de Giannis y la mamba mentality de Kobe Bryant.",
+  heroImage: "https://images.unsplash.com/photo-1504450758481-7338eaa75e6a?q=80&w=1920",
+  heroCtaText: "Comprar Todo Calzado",
+  heroSecondaryCtaText: "Línea Ja Morant",
+  athletes: [
+    {
+      name: "Kobe Bryant",
+      query: "Kobe Bryant",
+      image: "https://images.unsplash.com/photo-1544698310-74ea9d1c8258?q=80&w=800",
+      quote: "Mamba Mentality"
+    },
+    {
+      name: "Ja Morant",
+      query: "Ja Morant",
+      image: "https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=800",
+      quote: "Estilo Explosivo"
+    },
+    {
+      name: "Giannis Antetokounmpo",
+      query: "Giannis Antetokounmpo",
+      image: "https://images.unsplash.com/photo-1505666287802-931dc83948e9?q=80&w=800",
+      quote: "Poder Físico"
+    },
+    {
+      name: "LeBron James",
+      query: "LeBron James",
+      image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800",
+      quote: "El Rey de la Cancha"
+    }
+  ]
+};
+
 // Separated catalog component to handle searchParams properly within Next.js Suspense
 function CatalogContent() {
   const searchParams = useSearchParams();
@@ -17,6 +51,7 @@ function CatalogContent() {
   const categoryParam = searchParams.get('category');
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [config, setConfig] = useState<typeof DEFAULT_CONFIG | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
@@ -41,6 +76,21 @@ function CatalogContent() {
       }
     };
     fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const res = await fetch('/api/homepage-config');
+        if (res.ok) {
+          const data = await res.json();
+          setConfig(data);
+        }
+      } catch (err) {
+        console.error('Error al cargar config de la home:', err);
+      }
+    };
+    fetchConfig();
   }, []);
 
   // Update category selection based on URL search query parameters
@@ -112,33 +162,7 @@ function CatalogContent() {
     }
   };
 
-  // Athlete portfolio cards data
-  const athletes = [
-    {
-      name: 'Kobe Bryant',
-      query: 'Kobe Bryant',
-      image: 'https://images.unsplash.com/photo-1544698310-74ea9d1c8258?q=80&w=800',
-      quote: 'Mamba Mentality'
-    },
-    {
-      name: 'Ja Morant',
-      query: 'Ja Morant',
-      image: 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=800',
-      quote: 'Estilo Explosivo'
-    },
-    {
-      name: 'Giannis Antetokounmpo',
-      query: 'Giannis Antetokounmpo',
-      image: 'https://images.unsplash.com/photo-1505666287802-931dc83948e9?q=80&w=800',
-      quote: 'Poder Físico'
-    },
-    {
-      name: 'LeBron James',
-      query: 'LeBron James',
-      image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800',
-      quote: 'El Rey de la Cancha'
-    }
-  ];
+  const activeConfig = config || DEFAULT_CONFIG;
 
   return (
     <div className="flex flex-col gap-24 pb-24 bg-white text-neutral-900">
@@ -148,7 +172,7 @@ function CatalogContent() {
         {/* Immersive background image of a hoop at sunset */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1504450758481-7338eaa75e6a?q=80&w=1920" 
+            src={activeConfig.heroImage} 
             alt="Nike Basketball Hoop at Sunset" 
             className="w-full h-full object-cover opacity-60"
           />
@@ -162,23 +186,23 @@ function CatalogContent() {
               NIKE BASKETBALL
             </span>
             <h1 className="font-display text-5xl sm:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-white italic">
-              SIEMPRE EN VUELO.
+              {activeConfig.heroTitle}
             </h1>
             <p className="text-sm sm:text-base text-neutral-300 font-medium max-w-lg leading-relaxed">
-              Descubre las siluetas oficiales de firma diseñadas para la velocidad explosiva de Ja Morant, el poder dominante de Giannis y la mamba mentality de Kobe Bryant.
+              {activeConfig.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
               <button 
                 onClick={scrollToCatalog}
                 className="px-6 py-3.5 bg-white text-neutral-950 hover:bg-neutral-200 rounded-full font-sans text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
-                Comprar Todo Calzado
+                {activeConfig.heroCtaText}
               </button>
               <button 
-                onClick={() => handleAthleteClick('Ja')}
+                onClick={() => handleAthleteClick(activeConfig.athletes[1]?.query || 'Ja Morant')}
                 className="px-6 py-3.5 bg-transparent border border-white text-white hover:bg-white/10 rounded-full font-sans text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
               >
-                Línea Ja Morant
+                {activeConfig.heroSecondaryCtaText}
               </button>
             </div>
           </div>
@@ -197,7 +221,7 @@ function CatalogContent() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {athletes.map((ath) => (
+          {activeConfig.athletes.map((ath) => (
             <div 
               key={ath.name}
               onClick={() => handleAthleteClick(ath.query)}
